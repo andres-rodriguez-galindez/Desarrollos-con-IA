@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECOLSOFT - Transformamos su TI en ventaja competitiva</title>
+    <meta name="description" content="Servicios de tercerización TI, soporte técnico 24/7 y alquiler de oficinas. Más de 20 años de experiencia reduciendo costos y riesgos operativos.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #4fc3f7;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255,107,107,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,0 1000,100 1000,0"/></svg>');
+            background-size: 100% 100%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4fc3f7;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Technologies Section */
+        .technologies {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .tech-card {
+            background: #f8f9fa;
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+
+        .tech-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tech-icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .tech-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .tech-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .tech-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tech-features li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .tech-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .features {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .features li {
+            padding: 0.5rem 0;
+            color: #666;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .about-image {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 15px;
+            padding: 2rem;
+            color: white;
+            text-align: center;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .quote-author {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Clients Section */
+        .clients {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .client-logo {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+        }
+
+        .client-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Team Section */
+        .team {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .team-member h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .team-member p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            backdrop-filter: blur(5px);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255,107,107,0.3);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .contact-details {
+            list-style: none;
+        }
+
+        .contact-details li {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-details i {
+            margin-right: 0.5rem;
+            color: #4fc3f7;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #4fc3f7;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #4fc3f7;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card,
+        .team-member {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">TECOLSOFT</div>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#clientes">Clientes</a></li>
+                        <li><a href="#equipo">Equipo</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+                <a href="#contacto" class="cta-button">Consulta Gratuita</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Desarrollos a la medida con Microsoft Power Platform</h1>
+                    <p>Automatizamos y digitalizamos sus procesos empresariales con Power Apps, Power Automate, SharePoint y SQL Server. Soluciones personalizadas respaldadas por más de 20 años de experiencia en TI.</p>
+                    <a href="#contacto" class="cta-button">Solicitar Demo Gratuita</a>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Apps desarrolladas</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">20+</div>
+                            <div class="stat-label">Años de experiencia</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">90%</div>
+                            <div class="stat-label">Procesos automatizados</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="services">
+            <div class="container">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <h3>Desarrollos con Power Platform</h3>
+                        <p>Creamos aplicaciones empresariales personalizadas con Power Apps, automatizamos procesos con Power Automate, y desarrollamos dashboards con Power BI. Soluciones integradas con SharePoint y SQL Server.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🤖</div>
+                        <h3>Automatización de Procesos</h3>
+                        <p>Eliminamos tareas repetitivas y optimizamos workflows con Power Automate. Integramos sistemas existentes y creamos flujos que mejoran la productividad hasta un 70%.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📊</div>
+                        <h3>Business Intelligence</h3>
+                        <p>Transformamos sus datos en insights accionables con Power BI. Dashboards interactivos, reportes automatizados y análisis predictivo para toma de decisiones estratégicas.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🖥️</div>
+                        <h3>Tercerización de TI</h3>
+                        <p>Administración completa de infraestructura TI, soporte técnico 24/7 y mantenimiento preventivo. Reducimos costos operativos hasta un 40% mientras garantizamos continuidad.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🏢</div>
+                        <h3>Alquiler de Oficinas</h3>
+                        <p>Espacios físicos y virtuales completamente equipados para call centers y oficinas. Infraestructura tecnológica incluida con soporte especializado.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">👥</div>
+                        <h3>Gestión de Talento TI</h3>
+                        <p>Reclutamos desarrolladores especializados en Microsoft Power Platform, analistas de datos y especialistas en automatización. Personal certificado y con experiencia comprobada.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="technologies">
+            <div class="container">
+                <h2 class="section-title">Tecnologías Microsoft Power Platform</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem; color: #666;">
+                    Especializados en el ecosistema completo de Microsoft Power Platform para crear soluciones empresariales robustas y escalables.
+                </p>
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <div class="tech-icon">📱</div>
+                        <h3>Power Apps</h3>
+                        <p>Aplicaciones empresariales personalizadas sin código tradicional. Canvas apps, model-driven apps y portales para cualquier dispositivo.</p>
+                        <ul class="tech-features">
+                            <li>Aplicaciones móviles nativas</li>
+                            <li>Interfaces web responsivas</li>
+                            <li>Integración con datos empresariales</li>
+                            <li>Formularios dinámicos</li>
+                        </ul>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">🔄</div>
+                        <h3>Power Automate</h3>
+                        <p>Automatización de flujos de trabajo y procesos empresariales. Conecta aplicaciones, servicios y datos entre plataformas.</p>
+                        <ul class="tech-features">
+                            <li>Flujos de aprobación automáticos</li>
+                            <li>Integración con +400 conectores</li>
+                            <li>Procesamiento de documentos IA</li>
+                            <li>Notificaciones inteligentes</li>
+                        </ul>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">📊</div>
+                        <h3>Power BI</h3>
+                        <p>Business Intelligence y visualización de datos avanzada. Dashboards interactivos y reportes en tiempo real.</p>
+                        <ul class="tech-features">
+                            <li>Dashboards ejecutivos</li>
+                            <li>Reportes automatizados</li>
+                            <li>Análisis predictivo</li>
+                            <li>Alertas de datos</li>
+                        </ul>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">🌐</div>
+                        <h3>SharePoint</h3>
+                        <p>Plataforma colaborativa y gestión documental. Intranets, sitios de equipo y bibliotecas de documentos inteligentes.</p>
+                        <ul class="tech-features">
+                            <li>Gestión documental avanzada</li>
+                            <li>Sitios de colaboración</li>
+                            <li>Workflows personalizados</li>
+                            <li>Búsqueda inteligente</li>
+                        </ul>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">🗄️</div>
+                        <h3>SQL Server</h3>
+                        <p>Base de datos empresarial robusta y escalable. Gestión de datos, análisis y reporting con alta disponibilidad.</p>
+                        <ul class="tech-features">
+                            <li>Bases de datos relacionales</li>
+                            <li>Procedimientos almacenados</li>
+                            <li>Backup y recuperación</li>
+                            <li>Optimización de consultas</li>
+                        </ul>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">🎙️</div>
+                        <h3>Power Virtual Agents</h3>
+                        <p>Chatbots inteligentes sin código. Automatización de atención al cliente y soporte interno con IA conversacional.</p>
+                        <ul class="tech-features">
+                            <li>Chatbots conversacionales</li>
+                            <li>Integración con Teams</li>
+                            <li>Procesamiento de lenguaje natural</li>
+                            <li>Análisis de conversaciones</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="nosotros" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Especialistas en Microsoft Power Platform</h2>
+                        <p>Con más de 20 años de experiencia en TI, nos hemos especializado en Microsoft Power Platform para crear soluciones empresariales que transforman la forma en que las organizaciones operan y toman decisiones.</p>
+                        <p>Nuestro equipo combina experiencia técnica profunda con un entendimiento del negocio para entregar aplicaciones, automatizaciones y análisis que generan valor real y resultados medibles.</p>
+                        <ul class="features">
+                            <li>Desarrolladores certificados en Power Platform</li>
+                            <li>Más de 50 aplicaciones empresariales desarrolladas</li>
+                            <li>Especialistas en automatización de procesos</li>
+                            <li>Integración con sistemas existentes</li>
+                            <li>Metodología ágil y entrega rápida</li>
+                            <li>Soporte y mantenimiento continuo</li>
+                        </ul>
+                    </div>
+                    <div class="about-image">
+                        <div>
+                            <p class="quote">"La transformación digital no es solo sobre tecnología, es sobre empoderar a las personas para que hagan más con menos esfuerzo. Power Platform nos permite crear soluciones que realmente impactan el día a día de nuestros clientes."</p>
+                            <p class="quote-author">- Raphael O.R., Gerente General TECOLSOFT</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="clientes" class="clients">
+            <div class="container">
+                <h2 class="section-title">Clientes que confían en nosotros</h2>
+                <div class="clients-grid">
+                    <div class="client-logo">AGECOLDES</div>
+                    <div class="client-logo">COOMEVA</div>
+                    <div class="client-logo">EMERMEDICA</div>
+                    <div class="client-logo">ATLAS</div>
+                    <div class="client-logo">AVANZA</div>
+                    <div class="client-logo">BIOART</div>
+                    <div class="client-logo">COOFIPOPULAR</div>
+                    <div class="client-logo">HERCULES</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="equipo" class="team">
+            <div class="container">
+                <h2 class="section-title">Nuestro Equipo de Expertos</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-avatar">RO</div>
+                        <h4>Raphael Ocampo Rojas</h4>
+                        <p>Gerente General</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar">JO</div>
+                        <h4>Julián Ocampo Nuñez</h4>
+                        <p>Gerente Comercial</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar">AR</div>
+                        <h4>Andrés Felipe Rodríguez</h4>
+                        <p>Jefe de Operaciones TI</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar">LA</div>
+                        <h4>Leidy Stefania Anduquia</h4>
+                        <p>Coordinadora de Gestión Humana</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar">MP</div>
+                        <h4>Melissa Parra Ramírez</h4>
+                        <p>Coordinadora Comercial</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar">BC</div>
+                        <h4>Binsent Ceballos</h4>
+                        <p>Analista de Mesa de Ayuda</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>¿Listo para automatizar sus procesos?</h3>
+                        <p>Solicite una demo gratuita y descubra cómo Power Platform puede transformar su empresa. Evaluamos sus procesos actuales y proponemos soluciones personalizadas.</p>
+                        <ul class="contact-details">
+                            <li>📍 Cali, Valle del Cauca, Colombia</li>
+                            <li>📞 +57 (2) 555-0123</li>
+                            <li>📧 desarrollo@tecolsoft.com</li>
+                            <li>⏰ Consultoría especializada disponible</li>
+                        </ul>
+                    </div>
+                    <div class="contact-form">
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Nombre completo</label>
+                                <input type="text" id="name" name="name" placeholder="Su nombre completo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="su@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Empresa</label>
+                                <input type="text" id="company" name="company" placeholder="Nombre de su empresa">
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Servicio de interés</label>
+                                <select id="service" name="service" style="width: 100%; padding: 0.75rem; border: none; border-radius: 8px; background: rgba(255,255,255,0.2); color: white; backdrop-filter: blur(5px);">
+                                    <option value="">Seleccione un servicio</option>
+                                    <option value="power-apps">Desarrollo con Power Apps</option>
+                                    <option value="power-automate">Automatización de procesos</option>
+                                    <option value="power-bi">Business Intelligence</option>
+                                    <option value="sharepoint">Soluciones SharePoint</option>
+                                    <option value="tercerización">Tercerización de TI</option>
+                                    <option value="consultoria">Consultoría integral</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Cuéntenos sobre su proyecto</label>
+                                <textarea id="message" name="message" rows="3" placeholder="Describa los procesos que desea automatizar o digitalizar..."></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Solicitar Demo Gratuita</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>TECOLSOFT</h4>
+                    <p>Transformando la TI empresarial desde hace más de 20 años con soluciones integrales y soporte especializado.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="#servicios">Tercerización de TI</a></li>
+                        <li><a href="#servicios">Alquiler de Oficinas</a></li>
+                        <li><a href="#servicios">Gestión de Talento</a></li>
+                        <li><a href="#servicios">Licenciamiento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#equipo">Equipo</a></li>
+                        <li><a href="#clientes">Clientes</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li>Cali, Valle del Cauca</li>
+                        <li>+57 (2) 555-0123</li>
+                        <li>info@tecolsoft.com</li>
+                        <li>Soporte 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TECOLSOFT TIS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por su interés! Nos pondremos en contacto con usted pronto.');
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(30, 60, 114, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animate stats on scroll
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const finalValue = target.textContent;
+                        let currentValue = 0;
+                        const increment = finalValue.includes('+') ? 1 : 1;
+                        const timer = setInterval(() => {
+                            currentValue += increment;
+                            target.textContent = currentValue + (finalValue.includes('+') ? '+' : '');
+                            if (currentValue >= parseInt(finalValue)) {
+                                target.textContent = finalValue;
+                                clearInterval(timer);
+                            }
+                        }, 50);
+                    }
+                });
+            });
+            stats.forEach(stat => observer.observe(stat));
+        }
+
+        // Initialize animations when page loads
+        window.addEventListener('load', function() {
+            animateStats();
+        });
+
+        // Mobile menu toggle (for smaller screens)
+        function toggleMobileMenu() {
+            const nav = document.querySelector('nav ul');
+            nav.classList.toggle('mobile-active');
+        }
+
+        // Add mobile menu styles
+        const mobileStyles = `
+            @media (max-width: 768px) {
+                nav ul {
+                    position: fixed;
+                    top: 100%;
+                    left: 0;
+                    width: 100%;
+                    background: rgba(30, 60, 114, 0.95);
+                    backdrop-filter: blur(10px);
+                    padding: 2rem 0;
+                    transform: translateY(-100%);
+                    transition: transform 0.3s ease;
+                }
+                
+                nav ul.mobile-active {
+                    transform: translateY(0);
+                }
+            }
+        `;
+        
+        // Add mobile styles to head
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = mobileStyles;
+        document.head.appendChild(styleSheet);
+    </script>
+</body>
+</html>
