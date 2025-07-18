@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivi Montoya - Coaching Profesional & Estrategia Laboral</title>
+    <meta name="description" content="Transforma tu carrera profesional con Vivi Montoya. Coaching laboral, preparación de entrevistas y estrategias para conseguir el trabajo de tus sueños.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #fbbf24;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #fbbf24;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            color: #1e3a8a;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e40af 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.1)"/><stop offset="100%" style="stop-color:rgba(255,255,255,0)"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="400" cy="700" r="120" fill="url(%23a)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #ffffff, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            color: #1e3a8a;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(251, 191, 36, 0.3);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(251, 191, 36, 0.4);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fbbf24;
+            display: block;
+        }
+
+        .stat-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        .credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .credential {
+            background: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            border: 2px solid #e2e8f0;
+            font-weight: 500;
+            color: #1e3a8a;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            border-radius: 20px;
+            z-index: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .service-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .service-cta {
+            display: inline-block;
+            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .service-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        /* Courses Section */
+        .courses {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .course-image {
+            height: 200px;
+            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .course-content {
+            padding: 2rem;
+        }
+
+        .course-content h3 {
+            font-size: 1.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .course-content p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-modules {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-modules h4 {
+            font-size: 0.9rem;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .course-modules ul {
+            list-style: none;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .course-modules li {
+            padding: 0.2rem 0;
+        }
+
+        .course-modules li::before {
+            content: '→';
+            color: #fbbf24;
+            margin-right: 0.5rem;
+        }
+
+        .course-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .course-cta {
+            display: inline-block;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            color: #1e3a8a;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .course-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(251, 191, 36, 0.3);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 20px;
+            border-left: 4px solid #fbbf24;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+        }
+
+        .author-info h4 {
+            color: #1e3a8a;
+            font-weight: 600;
+        }
+
+        .author-info p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            color: #1e3a8a;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(251, 191, 36, 0.3);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-primary:hover,
+        .cta-secondary:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-secondary:hover {
+            background: white;
+            color: #1e3a8a;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #fbbf24;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .services-grid,
+            .courses-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Vivi Montoya</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="#contacto" class="cta-button">Sesión Gratuita</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-up">
+                <h1>Transforma tu Carrera Profesional con Estrategias que Realmente Funcionan</h1>
+                <p class="subtitle">Soy Vivi Montoya, coach laboral especializada en ayudar a profesionales ambiciosos a conseguir el trabajo de sus sueños y acelerar su crecimiento profesional.</p>
+                <a href="#contacto" class="hero-cta">
+                    📞 Reserva tu Sesión Gratuita de 15 min
+                </a>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-text">Profesionales Transformados</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-text">Consiguen Empleo en 3 Meses</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">40%</span>
+                        <span class="stat-text">Aumento Salarial Promedio</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre-mi" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-in-up">
+                    <h2>Conoce a Vivi Montoya</h2>
+                    <p><strong>+15 años de experiencia</strong> en recursos humanos y desarrollo profesional me han enseñado exactamente qué buscan las empresas y cómo destacar en un mercado competitivo.</p>
+                    <p>He trabajado en <strong>multinacionales</strong> en Europa y América Latina, reclutando y desarrollando talento para posiciones desde junior hasta C-level. Ahora dedico mi experiencia a ayudar a profesionales como tú a acelerar su carrera.</p>
+                    <p>Mi enfoque combina <strong>estrategia práctica</strong> con <strong>desarrollo personal</strong>, porque creo que el éxito profesional no se trata solo de técnicas, sino de construir la confianza y claridad para tomar las decisiones correctas.</p>
+                    <div class="credentials">
+                        <span class="credential">✓ Certified Professional Coach (ICF)</span>
+                        <span class="credential">✓ Master en Gestión de Talento</span>
+                        <span class="credential">✓ Experiencia Internacional</span>
+                        <span class="credential">✓ +500 Profesionales Mentorizados</span>
+                    </div>
+                </div>
+                <div class="about-image fade-in-up">
+                    <img src="https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Vivi Montoya - Coach Profesional">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2>Coaching Personalizado 1:1</h2>
+                <p>Sesiones personalizadas diseñadas para acelerar tu crecimiento profesional con estrategias específicas para tu situación.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in-up">
+                    <div class="service-icon">🎯</div>
+                    <h3>Sesión Diagnóstico</h3>
+                    <p>Descubrimos juntos cuáles son tus fortalezas, oportunidades y el camino más efectivo para alcanzar tus objetivos profesionales.</p>
+                    <ul class="service-features">
+                        <li>Análisis profundo de tu perfil profesional</li>
+                        <li>Identificación de oportunidades de crecimiento</li>
+                        <li>Plan estratégico personalizado</li>
+                        <li>Sesión de seguimiento por email</li>
+                    </ul>
+                    <div class="service-price">GRATIS</div>
+                    <a href="#contacto" class="service-cta">Reservar Ahora</a>
+                </div>
+
+                <div class="service-card fade-in-up">
+                    <div class="service-icon">⚡</div>
+                    <h3>Sesión Estratégica</h3>
+                    <p>Sesión intensiva para resolver un desafío específico: preparar entrevistas, optimizar tu CV, o planificar tu próximo movimiento profesional.</p>
+                    <ul class="service-features">
+                        <li>90 minutos de coaching intensivo</li>
+                        <li>Estrategias específicas para tu objetivo</li>
+                        <li>Materiales y recursos descargables</li>
+                        <li>Seguimiento por 2 semanas</li>
+                    </ul>
+                    <div class="service-price">180€</div>
+                    <a href="#contacto" class="service-cta">Reservar Ahora</a>
+                </div>
+
+                <div class="service-card fade-in-up">
+                    <div class="service-icon">🚀</div>
+                    <h3>Paquete Transformación</h3>
+                    <p>Programa completo de 4 sesiones para profesionales que quieren hacer un cambio significativo en su carrera profesional.</p>
+                    <ul class="service-features">
+                        <li>4 sesiones de 90 minutos cada una</li>
+                        <li>Plan de acción personalizado</li>
+                        <li>Acceso a recursos exclusivos</li>
+                        <li>Soporte por WhatsApp entre sesiones</li>
+                        <li>Seguimiento por 3 meses</li>
+                    </ul>
+                    <div class="service-price">600€ <span style="font-size: 1rem; color: #64748b; text-decoration: line-through;">720€</span></div>
+                    <a href="#contacto" class="service-cta">Reservar Ahora</a>
+                </div>
+
+                <div class="service-card fade-in-up">
+                    <div class="service-icon">👑</div>
+                    <h3>Paquete Carrera 360°</h3>
+                    <p>Transformación completa de tu carrera profesional. 8 sesiones para profesionales que quieren llegar al siguiente nivel.</p>
+                    <ul class="service-features">
+                        <li>8 sesiones de 90 minutos</li>
+                        <li>Estrategia completa de carrera</li>
+                        <li>Desarrollo de marca personal</li>
+                        <li>Networking estratégico</li>
+                        <li>Negociación salarial</li>
+                        <li>Soporte ilimitado por 6 meses</li>
+                    </ul>
+                    <div class="service-price">1.200€ <span style="font-size: 1rem; color: #64748b; text-decoration: line-through;">1.440€</span></div>
+                    <a href="#contacto" class="service-cta">Reservar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="cursos" class="courses">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2>Cursos Digitales</h2>
+                <p>Aprende a tu ritmo con cursos diseñados para darte las herramientas exactas que necesitas para destacar en tu búsqueda de empleo.</p>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card fade-in-up">
+                    <div class="course-image">🎯</div>
+                    <div class="course-content">
+                        <h3>El
