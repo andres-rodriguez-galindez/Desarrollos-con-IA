@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Estilos de Aprendizaje de Kolb</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .student-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #4facfe;
+        }
+        
+        .student-info h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .student-info input {
+            width: 200px;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin: 5px 10px;
+            font-size: 16px;
+        }
+        
+        .instructions {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #2196f3;
+        }
+        
+        .question {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .question:hover {
+            border-color: #4facfe;
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.2);
+        }
+        
+        .question h4 {
+            color: #333;
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .option:hover {
+            background: #e3f2fd;
+            border-color: #4facfe;
+        }
+        
+        .option.selected {
+            background: #4facfe;
+            color: white;
+            border-color: #2196f3;
+        }
+        
+        .option input {
+            margin-right: 10px;
+            width: 60px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .option.selected input {
+            background: white;
+            border-color: #fff;
+        }
+        
+        .results {
+            background: #f0f8ff;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border: 2px solid #4facfe;
+        }
+        
+        .results h3 {
+            color: #333;
+            margin-top: 0;
+        }
+        
+        .scores {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .score-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #ddd;
+            transition: all 0.3s ease;
+        }
+        
+        .score-card.highest {
+            border-color: #4caf50;
+            background: #e8f5e8;
+        }
+        
+        .score-card h4 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        
+        .score-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #4facfe;
+        }
+        
+        .result-card {
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .result-card h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.8em;
+        }
+        
+        .calculate-btn, .save-btn, .download-btn, .clear-btn {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 10px;
+        }
+        
+        .save-btn {
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+        }
+        
+        .clear-btn {
+            background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+        }
+        
+        .calculate-btn:hover, .save-btn:hover, .download-btn:hover, .clear-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(79, 172, 254, 0.3);
+        }
+        
+        .validation-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #f44336;
+        }
+        
+        .saved-results {
+            background: #f0f8ff;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border: 2px solid #4facfe;
+        }
+        
+        .saved-results h3 {
+            color: #333;
+            margin-top: 0;
+        }
+        
+        .student-record {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
+        }
+        
+        .student-record:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .student-record h4 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        
+        .student-record .details {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .student-record .score-mini {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .delete-record {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            float: right;
+        }
+        
+        .success-message {
+            background: #e8f5e8;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 Test de Estilos de Aprendizaje de Kolb</h1>
+            <p>Para estudiantes de quinto grado</p>
+        </div>
+        
+        <div class="content">
+            <div class="student-info">
+                <h3>📝 Información del Estudiante</h3>
+                <label>Nombre: <input type="text" id="studentName" placeholder="Escribe tu nombre"></label>
+                <label>Grado: <input type="text" id="studentGrade" placeholder="5° Grado" value="5° Grado"></label>
+                <label>Fecha: <input type="date" id="testDate"></label>
+            </div>
+            
+            <div class="instructions">
+                <h3>📋 Instrucciones</h3>
+                <p><strong>Lee bien cada pregunta y pon un número del 1 al 4 según cómo te identifiques con cada respuesta:</strong></p>
+                <ul>
+                    <li><strong>4</strong> = Me describe muy bien</li>
+                    <li><strong>3</strong> = Me describe bien</li>
+                    <li><strong>2</strong> = Me describe un poco</li>
+                    <li><strong>1</strong> = No me describe</li>
+                </ul>
+                <p><strong>⚠️ Importante:</strong> No repitas el mismo número en una misma pregunta. Solo puedes usar una vez cada número por pregunta.</p>
+            </div>
+            
+            <div id="questions"></div>
+            
+            <button class="calculate-btn" onclick="calculateResults()">🔍 Calcular mi Estilo de Aprendizaje</button>
+            
+            <div id="validationMessage" class="validation-message" style="display:none;"></div>
+            <div id="successMessage" class="success-message" style="display:none;"></div>
+            
+            <div id="results" class="results" style="display:none;">
+                <h3>📊 Resultados del Test</h3>
+                <div class="scores" id="scores"></div>
+                <div id="finalResult"></div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="save-btn" onclick="saveResult()">💾 Guardar Resultado</button>
+                    <button class="download-btn" onclick="downloadResults()">📥 Descargar Todos los Resultados</button>
+                    <button class="clear-btn" onclick="clearForm()">🔄 Nuevo Test</button>
+                </div>
+            </div>
+            
+            <div id="savedResults" class="saved-results">
+                <h3>📚 Resultados Guardados</h3>
+                <div id="savedList"></div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="download-btn" onclick="downloadResults()">📥 Descargar Excel</button>
+                    <button class="clear-btn" onclick="clearAllResults()">🗑️ Limpiar Todo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Preguntas del test con sus opciones y categorías
+        const questions = [
+            {
+                question: "1. Cuando tengo que resolver un problema...",
+                options: [
+                    { text: "Me gusta actuar y probar ideas para ver qué pasa.", category: "EA" },
+                    { text: "Prefiero observar y pensar antes de hacer algo.", category: "OR" },
+                    { text: "Me guío por lo que siento que está bien.", category: "EC" },
+                    { text: "Pienso en muchas ideas y trato de encontrar la mejor.", category: "CA" }
+                ]
+            },
+            {
+                question: "2. Cuando aprendo algo nuevo...",
+                options: [
+                    { text: "Me gusta verlo y observar a otros primero.", category: "OR" },
+                    { text: "Me gusta tocar, mover, experimentar y hacerlo por mí mismo.", category: "EA" },
+                    { text: "Me gusta entender por qué pasa y cómo funciona.", category: "CA" },
+                    { text: "Me gusta relacionarlo con mis emociones y experiencias.", category: "EC" }
+                ]
+            },
+            {
+                question: "3. Si estoy aprendiendo con otros...",
+                options: [
+                    { text: "Me gusta imaginar, hablar y compartir ideas.", category: "EC" },
+                    { text: "Me gusta entender bien la teoría o el tema.", category: "OR" },
+                    { text: "Me gusta hacer cosas juntos, como un proyecto o un juego.", category: "CA" },
+                    { text: "Me gusta ver cómo lo hacen los demás antes de participar.", category: "EA" }
+                ]
+            },
+            {
+                question: "4. Cuando me explican algo complicado...",
+                options: [
+                    { text: "Me ayuda verlo en un dibujo o gráfico.", category: "EC" },
+                    { text: "Prefiero que me lo expliquen con palabras claras y ejemplos.", category: "OR" },
+                    { text: "Me gusta hacerlo y entenderlo mientras lo hago.", category: "CA" },
+                    { text: "Me gusta que me den tiempo para pensarlo y hacer preguntas.", category: "EA" }
+                ]
+            },
+            {
+                question: "5. Para mí, aprender es más fácil cuando...",
+                options: [
+                    { text: "Puedo practicar o experimentar.", category: "EC" },
+                    { text: "Me lo explican con lógica y orden.", category: "OR" },
+                    { text: "Me lo muestran con ejemplos reales.", category: "CA" },
+                    { text: "Me dejan imaginar, opinar y crear.", category: "EA" }
+                ]
+            },
+            {
+                question: "6. En una clase divertida yo...",
+                options: [
+                    { text: "Hago muchas preguntas para entender mejor.", category: "CA" },
+                    { text: "Participo con entusiasmo y me muevo mucho.", category: "EA" },
+                    { text: "Escucho con atención y observo todo.", category: "OR" },
+                    { text: "Me gusta pensar ideas nuevas y diferentes.", category: "EC" }
+                ]
+            },
+            {
+                question: "7. Cuando trabajo en grupo...",
+                options: [
+                    { text: "Escucho a todos con calma antes de opinar.", category: "EC" },
+                    { text: "Propongo ideas y las pruebo rápido.", category: "EA" },
+                    { text: "Me guío por mis sentimientos o intuición.", category: "OR" },
+                    { text: "Quiero que todo esté claro y bien explicado.", category: "CA" }
+                ]
+            },
+            {
+                question: "8. Cuando leo un texto...",
+                options: [
+                    { text: "Me gusta imaginar lo que pasa como si fuera una historia.", category: "EC" },
+                    { text: "Me gusta subrayar y escribir lo más importante.", category: "OR" },
+                    { text: "Me gusta explicarlo con mis propias palabras a otros.", category: "CA" },
+                    { text: "Me gusta relacionarlo con cosas que ya he vivido.", category: "EA" }
+                ]
+            },
+            {
+                question: "9. Me gusta más...",
+                options: [
+                    { text: "Hacer experimentos o juegos con lo que aprendo.", category: "EC" },
+                    { text: "Leer y entender bien los conceptos.", category: "CA" },
+                    { text: "Hablar con otros sobre lo que siento y pienso.", category: "OR" },
+                    { text: "Observar antes de actuar.", category: "EA" }
+                ]
+            },
+            {
+                question: "10. En mi tiempo libre...",
+                options: [
+                    { text: "Juego y me muevo mucho.", category: "EC" },
+                    { text: "Me gusta imaginar historias o dibujar.", category: "OR" },
+                    { text: "Armo rompecabezas o busco entender cosas difíciles.", category: "CA" },
+                    { text: "Me gusta observar, mirar cosas nuevas o escribir.", category: "EA" }
+                ]
+            }
+        ];
+
+        // Descripciones de los estilos de aprendizaje
+        const learningStyles = {
+            "Acomodador": {
+                description: "Aprendes mejor haciendo y experimentando. Te gusta probar cosas nuevas y eres muy activo en tu aprendizaje.",
+                characteristics: "• Te gusta actuar y experimentar<br>• Prefieres aprender haciendo<br>• Eres intuitivo y te adaptas fácilmente<br>• Te gusta trabajar en equipo"
+            },
+            "Divergente": {
+                description: "Aprendes mejor observando y reflexionando. Te gusta imaginar, crear y ver las cosas desde diferentes perspectivas.",
+                characteristics: "• Te gusta observar antes de actuar<br>• Eres creativo e imaginativo<br>• Te gusta trabajar en grupo<br>• Prefieres las actividades reflexivas"
+            },
+            "Convergente": {
+                description: "Aprendes mejor pensando y aplicando ideas. Te gusta encontrar soluciones prácticas y usar la lógica.",
+                characteristics: "• Te gusta resolver problemas<br>• Prefieres las aplicaciones prácticas<br>• Eres lógico y analítico<br>• Te gusta trabajar con objetos y máquinas"
+            },
+            "Asimilador": {
+                description: "Aprendes mejor observando y pensando. Te gusta entender las teorías y organizar la información de manera lógica.",
+                characteristics: "• Te gusta entender las teorías<br>• Prefieres la observación y reflexión<br>• Eres analítico y organizado<br>• Te gusta leer y estudiar"
+            }
+        };
+
+        // Generar preguntas en el HTML
+        function generateQuestions() {
+            const questionsContainer = document.getElementById('questions');
+            
+            questions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `
+                    <h4>${q.question}</h4>
+                    <div class="options">
+                        ${q.options.map((option, optIndex) => `
+                            <div class="option" data-question="${index}" data-option="${optIndex}">
+                                <input type="number" min="1" max="4" data-question="${index}" data-option="${optIndex}" data-category="${option.category}">
+                                <span>${option.text}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                questionsContainer.appendChild(questionDiv);
+            });
+        }
+
+        // Validar que no se repitan números en una pregunta
+        function validateQuestion(questionIndex) {
+            const inputs = document.querySelectorAll(`input[data-question="${questionIndex}"]`);
+            const values = Array.from(inputs).map(input => parseInt(input.value)).filter(val => !isNaN(val));
+            
+            // Verificar que no hay valores repetidos
+            const uniqueValues = [...new Set(values)];
+            return values.length === uniqueValues.length && values.length === 4;
+        }
+
+        // Calcular resultados
+        function calculateResults() {
+            const validationMessage = document.getElementById('validationMessage');
+            validationMessage.style.display = 'none';
+            
+            // Validar todas las preguntas
+            let allValid = true;
+            let invalidQuestions = [];
+            
+            for (let i = 0; i < questions.length; i++) {
+                if (!validateQuestion(i)) {
+                    allValid = false;
+                    invalidQuestions.push(i + 1);
+                }
+            }
+            
+            if (!allValid) {
+                validationMessage.innerHTML = `❌ Por favor, completa correctamente las preguntas: ${invalidQuestions.join(', ')}. Recuerda usar los números 1, 2, 3, 4 sin repetir en cada pregunta.`;
+                validationMessage.style.display = 'block';
+                return;
+            }
+            
+            // Calcular puntajes por categoría
+            const scores = { EC: 0, OR: 0, CA: 0, EA: 0 };
+            
+            questions.forEach((q, qIndex) => {
+                q.options.forEach((option, oIndex) => {
+                    const input = document.querySelector(`input[data-question="${qIndex}"][data-option="${oIndex}"]`);
+                    const value = parseInt(input.value);
+                    scores[option.category] += value;
+                });
+            });
+            
+            // Determinar estilo de aprendizaje
+            let learningStyle = "";
+            const ec_ea = scores.EC + scores.EA;
+            const ec_or = scores.EC + scores.OR;
+            const ca_or = scores.CA + scores.OR;
+            const ca_ea = scores.CA + scores.EA;
+            
+            const combinations = {
+                "Acomodador": ec_ea,
+                "Divergente": ec_or,
+                "Asimilador": ca_or,
+                "Convergente": ca_ea
+            };
+            
+            learningStyle = Object.keys(combinations).reduce((a, b) => 
+                combinations[a] > combinations[b] ? a : b
+            );
+            
+            // Mostrar resultados
+            displayResults(scores, learningStyle, combinations);
+        }
+
+        function displayResults(scores, learningStyle, combinations) {
+            const resultsDiv = document.getElementById('results');
+            const scoresDiv = document.getElementById('scores');
+            const finalResultDiv = document.getElementById('finalResult');
+            
+            // Mostrar puntajes individuales
+            scoresDiv.innerHTML = Object.entries(scores).map(([category, score]) => {
+                const categoryNames = {
+                    EC: "Experiencia Concreta",
+                    OR: "Observación Reflexiva", 
+                    CA: "Conceptualización Abstracta",
+                    EA: "Experimentación Activa"
+                };
+                
+                return `
+                    <div class="score-card">
+                        <h4>${categoryNames[category]}</h4>
+                        <div class="score-value">${score}</div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Mostrar resultado final
+            const styleInfo = learningStyles[learningStyle];
+            finalResultDiv.innerHTML = `
+                <div class="result-card">
+                    <h3>🎯 Tu Estilo de Aprendizaje es: ${learningStyle}</h3>
+                    <p><strong>${styleInfo.description}</strong></p>
+                    <div style="margin-top: 20px; text-align: left;">
+                        <h4>Características principales:</h4>
+                        ${styleInfo.characteristics}
+                    </div>
+                    <div style="margin-top: 20px; font-size: 0.9em; opacity: 0.9;">
+                        <strong>Puntajes de combinación:</strong><br>
+                        EC+EA (Acomodador): ${combinations.Acomodador} | 
+                        EC+OR (Divergente): ${combinations.Divergente} | 
+                        CA+OR (Asimilador): ${combinations.Asimilador} | 
+                        CA+EA (Convergente): ${combinations.Convergente}
+                    </div>
+                </div>
+            `;
+            
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Inicializar la aplicación
+        document.addEventListener('DOMContentLoaded', function() {
+            generateQuestions();
+            document.getElementById('testDate').value = new Date().toISOString().split('T')[0];
+            loadSavedResults();
+            
+            // Agregar event listeners para validación en tiempo real
+            document.addEventListener('input', function(e) {
+                if (e.target.type === 'number') {
+                    const questionIndex = parseInt(e.target.dataset.question);
+                    const option = e.target.closest('.option');
+                    
+                    // Validar rango
+                    if (e.target.value < 1 || e.target.value > 4) {
+                        e.target.style.borderColor = '#f44336';
+                        return;
+                    } else {
+                        e.target.style.borderColor = '#4caf50';
+                    }
+                    
+                    // Validar duplicados
+                    const inputs = document.querySelectorAll(`input[data-question="${questionIndex}"]`);
+                    const values = Array.from(inputs).map(input => parseInt(input.value)).filter(val => !isNaN(val));
+                    const hasDuplicates = values.length !== [...new Set(values)].length;
+                    
+                    inputs.forEach(input => {
+                        if (hasDuplicates) {
+                            input.style.borderColor = '#f44336';
+                        } else {
+                            input.style.borderColor = '#4caf50';
+                        }
+                    });
+                }
+            });
+        });
+
+        // Funciones para guardar y cargar resultados
+        function saveResult() {
+            const studentName = document.getElementById('studentName').value;
+            const studentGrade = document.getElementById('studentGrade').value;
+            const testDate = document.getElementById('testDate').value;
+            
+            if (!studentName.trim()) {
+                showMessage('Por favor, ingresa el nombre del estudiante.', 'error');
+                return;
+            }
+            
+            // Obtener respuestas actuales
+            const currentAnswers = {};
+            const currentScores = {};
+            
+            questions.forEach((q, qIndex) => {
+                currentAnswers[qIndex] = {};
+                q.options.forEach((option, oIndex) => {
+                    const input = document.querySelector(`input[data-question="${qIndex}"][data-option="${oIndex}"]`);
+                    currentAnswers[qIndex][oIndex] = parseInt(input.value);
+                });
+            });
+            
+            // Calcular puntajes
+            const scores = { EC: 0, OR: 0, CA: 0, EA: 0 };
+            
+            questions.forEach((q, qIndex) => {
+                q.options.forEach((option, oIndex) => {
+                    const value = currentAnswers[qIndex][oIndex];
+                    scores[option.category] += value;
+                });
+            });
+            
+            // Determinar estilo
+            const combinations = {
+                "Acomodador": scores.EC + scores.EA,
+                "Divergente": scores.EC + scores.OR,
+                "Asimilador": scores.CA + scores.OR,
+                "Convergente": scores.CA + scores.EA
+            };
+            
+            const learningStyle = Object.keys(combinations).reduce((a, b) => 
+                combinations[a] > combinations[b] ? a : b
+            );
+            
+            // Crear registro del estudiante
+            const studentRecord = {
+                id: Date.now(),
+                name: studentName,
+                grade: studentGrade,
+                date: testDate,
+                answers: currentAnswers,
+                scores: scores,
+                combinations: combinations,
+                learningStyle: learningStyle,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Guardar en el almacenamiento
+            let savedResults = JSON.parse(localStorage.getItem('kolbTestResults') || '[]');
+            savedResults.push(studentRecord);
+            localStorage.setItem('kolbTestResults', JSON.stringify(savedResults));
+            
+            showMessage(`✅ Resultado guardado exitosamente para ${studentName}`, 'success');
+            loadSavedResults();
+        }
+
+        function loadSavedResults() {
+            const savedResults = JSON.parse(localStorage.getItem('kolbTestResults') || '[]');
+            const savedList = document.getElementById('savedList');
+            
+            if (savedResults.length === 0) {
+                savedList.innerHTML = '<p style="text-align: center; color: #666;">No hay resultados guardados aún.</p>';
+                return;
+            }
+            
+            savedList.innerHTML = savedResults.map(record => `
+                <div class="student-record">
+                    <h4>👤 ${record.name} - ${record.grade}</h4>
+                    <p><strong>Fecha:</strong> ${record.date} | <strong>Estilo:</strong> ${record.learningStyle}</p>
+                    <div class="details">
+                        <div class="score-mini">
+                            <strong>EC:</strong> ${record.scores.EC}
+                        </div>
+                        <div class="score-mini">
+                            <strong>OR:</strong> ${record.scores.OR}
+                        </div>
+                        <div class="score-mini">
+                            <strong>CA:</strong> ${record.scores.CA}
+                        </div>
+                        <div class="score-mini">
+                            <strong>EA:</strong> ${record.scores.EA}
+                        </div>
+                        <div class="score-mini">
+                            <strong>Acomodador:</strong> ${record.combinations.Acomodador}
+                        </div>
+                        <div class="score-mini">
+                            <strong>Divergente:</strong> ${record.combinations.Divergente}
+                        </div>
+                        <div class="score-mini">
+                            <strong>Asimilador:</strong> ${record.combinations.Asimilador}
+                        </div>
+                        <div class="score-mini">
+                            <strong>Convergente:</strong> ${record.combinations.Convergente}
+                        </div>
+                    </div>
+                    <button class="delete-record" onclick="deleteRecord(${record.id})">🗑️ Eliminar</button>
+                </div>
+            `).join('');
+        }
+
+        function deleteRecord(id) {
+            if (confirm('¿Estás seguro de que quieres eliminar este registro?')) {
+                let savedResults = JSON.parse(localStorage.getItem('kolbTestResults') || '[]');
+                savedResults = savedResults.filter(record => record.id !== id);
+                localStorage.setItem('kolbTestResults', JSON.stringify(savedResults));
+                loadSavedResults();
+                showMessage('Registro eliminado correctamente', 'success');
+            }
+        }
+
+        function clearAllResults() {
+            if (confirm('¿Estás seguro de que quieres eliminar TODOS los resultados guardados?')) {
+                localStorage.removeItem('kolbTestResults');
+                loadSavedResults();
+                showMessage('Todos los resultados han sido eliminados', 'success');
+            }
+        }
+
+        function clearForm() {
+            document.getElementById('studentName').value = '';
+            document.getElementById('studentGrade').value = '5° Grado';
+            document.getElementById('testDate').value = new Date().toISOString().split('T')[0];
+            
+            // Limpiar todas las respuestas
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                input.value = '';
+                input.style.borderColor = '#ddd';
+            });
+            
+            // Ocultar resultados
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('validationMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+            
+            // Ir al inicio
+            window.scrollTo(0, 0);
+        }
+
+        function downloadResults() {
+            const savedResults = JSON.parse(localStorage.getItem('kolbTestResults') || '[]');
+            
+            if (savedResults.length === 0) {
+                showMessage('No hay resultados para descargar', 'error');
+                return;
+            }
+            
+            // Crear CSV
+            let csvContent = 'Nombre,Grado,Fecha,EC,OR,CA,EA,Acomodador,Divergente,Asimilador,Convergente,Estilo_Aprendizaje\n';
+            
+            savedResults.forEach(record => {
+                csvContent += `${record.name},${record.grade},${record.date},${record.scores.EC},${record.scores.OR},${record.scores.CA},${record.scores.EA},${record.combinations.Acomodador},${record.combinations.Divergente},${record.combinations.Asimilador},${record.combinations.Convergente},${record.learningStyle}\n`;
+            });
+            
+            // Descargar archivo
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'resultados_test_kolb.csv');
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            showMessage('Archivo descargado exitosamente', 'success');
+        }
+
+        function showMessage(message, type) {
+            const messageDiv = type === 'error' ? 
+                document.getElementById('validationMessage') : 
+                document.getElementById('successMessage');
+            
+            messageDiv.innerHTML = message;
+            messageDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
