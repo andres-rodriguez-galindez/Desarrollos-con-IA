@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Estilos de Aprendizaje - Kolb</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .student-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .student-info h3 {
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .student-info input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .student-info input:focus {
+            outline: none;
+            border-color: #4facfe;
+        }
+        
+        .instructions {
+            background: #fff3cd;
+            border: 2px solid #ffeaa7;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .instructions h3 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+        
+        .instructions ul {
+            color: #856404;
+            margin-left: 20px;
+        }
+        
+        .question-container {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #4facfe;
+        }
+        
+        .question h4 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        
+        .options {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .option:hover {
+            border-color: #4facfe;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.2);
+        }
+        
+        .option.selected {
+            border-color: #4facfe;
+            background: #f0f8ff;
+        }
+        
+        .option select {
+            width: 60px;
+            padding: 8px;
+            border: 2px solid #e9ecef;
+            border-radius: 5px;
+            font-size: 16px;
+            background: white;
+        }
+        
+        .option select:focus {
+            outline: none;
+            border-color: #4facfe;
+        }
+        
+        .option-text {
+            flex: 1;
+            font-size: 1.1em;
+            color: #333;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin-top: 30px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(79, 172, 254, 0.3);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .results {
+            display: none;
+            background: #d4edda;
+            border: 2px solid #c3e6cb;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        
+        .results h3 {
+            color: #155724;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        
+        .result-details {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .learning-style {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #4facfe;
+            margin-bottom: 15px;
+        }
+        
+        .style-description {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .scores {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .score-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .score-label {
+            font-weight: bold;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .score-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #4facfe;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin-right: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .restart-btn {
+            background: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: transform 0.3s;
+        }
+        
+        .restart-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 Test de Estilos de Aprendizaje</h1>
+            <p>Basado en el modelo de David Kolb - Para estudiantes de 5° grado</p>
+        </div>
+        
+        <div class="content">
+            <div class="student-info">
+                <h3>👤 Información del estudiante</h3>
+                <input type="text" id="studentName" placeholder="Escribe tu nombre completo aquí..." maxlength="100">
+            </div>
+            
+            <div class="instructions">
+                <h3>📋 Instrucciones</h3>
+                <p><strong>Lee cada pregunta y sus 4 opciones. Ordena las opciones del 1 al 4 según cómo te identifiques:</strong></p>
+                <ul>
+                    <li><strong>4</strong> = Me describe muy bien</li>
+                    <li><strong>3</strong> = Me describe bien</li>
+                    <li><strong>2</strong> = Me describe un poco</li>
+                    <li><strong>1</strong> = No me describe</li>
+                </ul>
+                <p><strong>¡Importante!</strong> No repitas el mismo número en una pregunta. Usa cada número (1, 2, 3, 4) una sola vez por pregunta.</p>
+            </div>
+            
+            <div class="error" id="errorMessage"></div>
+            
+            <form id="testForm">
+                <!-- Las preguntas se generarán con JavaScript -->
+            </form>
+            
+            <button type="button" class="submit-btn" id="submitBtn" onclick="calculateResults()">
+                🎯 Ver mis resultados
+            </button>
+            
+            <div class="results" id="results">
+                <h3>🎉 ¡Tus Resultados!</h3>
+                <div class="result-details" id="resultDetails"></div>
+                <div class="scores" id="scoresDisplay"></div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="download-btn" onclick="downloadResults()">📥 Descargar Resultados</button>
+                    <button class="restart-btn" onclick="restartTest()">🔄 Hacer Test Nuevamente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                id: 1,
+                text: "Cuando tengo que resolver un problema...",
+                options: [
+                    { id: "A", text: "Me gusta actuar y probar ideas para ver qué pasa.", dimension: "EA" },
+                    { id: "B", text: "Prefiero observar y pensar antes de hacer algo.", dimension: "OR" },
+                    { id: "C", text: "Me guío por lo que siento que está bien.", dimension: "EC" },
+                    { id: "D", text: "Pienso en muchas ideas y trato de encontrar la mejor.", dimension: "CA" }
+                ]
+            },
+            {
+                id: 2,
+                text: "Cuando aprendo algo nuevo...",
+                options: [
+                    { id: "A", text: "Me gusta verlo y observar a otros primero.", dimension: "OR" },
+                    { id: "B", text: "Me gusta tocar, mover, experimentar y hacerlo por mí mismo.", dimension: "EA" },
+                    { id: "C", text: "Me gusta entender por qué pasa y cómo funciona.", dimension: "CA" },
+                    { id: "D", text: "Me gusta relacionarlo con mis emociones y experiencias.", dimension: "EC" }
+                ]
+            },
+            {
+                id: 3,
+                text: "Si estoy aprendiendo con otros...",
+                options: [
+                    { id: "A", text: "Me gusta imaginar, hablar y compartir ideas.", dimension: "EC" },
+                    { id: "B", text: "Me gusta entender bien la teoría o el tema.", dimension: "OR" },
+                    { id: "C", text: "Me gusta hacer cosas juntos, como un proyecto o un juego.", dimension: "CA" },
+                    { id: "D", text: "Me gusta ver cómo lo hacen los demás antes de participar.", dimension: "EA" }
+                ]
+            },
+            {
+                id: 4,
+                text: "Cuando me explican algo complicado...",
+                options: [
+                    { id: "A", text: "Me ayuda verlo en un dibujo o gráfico.", dimension: "EC" },
+                    { id: "B", text: "Prefiero que me lo expliquen con palabras claras y ejemplos.", dimension: "OR" },
+                    { id: "C", text: "Me gusta hacerlo y entenderlo mientras lo hago.", dimension: "CA" },
+                    { id: "D", text: "Me gusta que me den tiempo para pensarlo y hacer preguntas.", dimension: "EA" }
+                ]
+            },
+            {
+                id: 5,
+                text: "Para mí, aprender es más fácil cuando...",
+                options: [
+                    { id: "A", text: "Puedo practicar o experimentar.", dimension: "EC" },
+                    { id: "B", text: "Me lo explican con lógica y orden.", dimension: "OR" },
+                    { id: "C", text: "Me gusta hacer cosas juntos, como un proyecto o un juego.", dimension: "EA" },
+                    { id: "D", text: "Me lo muestran con ejemplos reales.", dimension: "CA" }
+                ]
+            },
+            {
+                id: 6,
+                text: "En una clase divertida yo...",
+                options: [
+                    { id: "A", text: "Hago muchas preguntas para entender mejor.", dimension: "CA" },
+                    { id: "B", text: "Participo con entusiasmo y me muevo mucho.", dimension: "EA" },
+                    { id: "C", text: "Escucho con atención y observo todo.", dimension: "OR" },
+                    { id: "D", text: "Me gusta pensar ideas nuevas y diferentes.", dimension: "EC" }
+                ]
+            },
+            {
+                id: 7,
+                text: "Cuando trabajo en grupo...",
+                options: [
+                    { id: "A", text: "Escucho a todos con calma antes de opinar.", dimension: "EC" },
+                    { id: "B", text: "Propongo ideas y las pruebo rápido.", dimension: "EA" },
+                    { id: "C", text: "Me guío por mis sentimientos o intuición.", dimension: "OR" },
+                    { id: "D", text: "Quiero que todo esté claro y bien explicado.", dimension: "CA" }
+                ]
+            },
+            {
+                id: 8,
+                text: "Cuando leo un texto...",
+                options: [
+                    { id: "A", text: "Me gusta imaginar lo que pasa como si fuera una historia.", dimension: "EC" },
+                    { id: "B", text: "Me gusta subrayar y escribir lo más importante.", dimension: "OR" },
+                    { id: "C", text: "Me gusta explicarlo con mis propias palabras a otros.", dimension: "CA" },
+                    { id: "D", text: "Me gusta relacionarlo con cosas que ya he vivido.", dimension: "EA" }
+                ]
+            },
+            {
+                id: 9,
+                text: "Me gusta más...",
+                options: [
+                    { id: "A", text: "Hacer experimentos o juegos con lo que aprendo.", dimension: "EC" },
+                    { id: "B", text: "Leer y entender bien los conceptos.", dimension: "CA" },
+                    { id: "C", text: "Hablar con otros sobre lo que siento y pienso.", dimension: "EA" },
+                    { id: "D", text: "Observar antes de actuar.", dimension: "OR" }
+                ]
+            },
+            {
+                id: 10,
+                text: "En mi tiempo libre...",
+                options: [
+                    { id: "A", text: "Juego y me muevo mucho.", dimension: "EC" },
+                    { id: "B", text: "Me gusta imaginar historias o dibujar.", dimension: "OR" },
+                    { id: "C", text: "Armo rompecabezas o busco entender cosas difíciles.", dimension: "CA" },
+                    { id: "D", text: "Me gusta observar, mirar cosas nuevas o escribir.", dimension: "EA" }
+                ]
+            }
+        ];
+
+        const learningStyles = {
+            'EC+EA': {
+                name: 'Acomodador',
+                description: 'Te gusta aprender haciendo y experimentando. Prefieres las actividades prácticas y trabajar en equipo. Eres muy bueno para adaptarte a nuevas situaciones y resolver problemas de manera creativa.'
+            },
+            'EC+OR': {
+                name: 'Divergente',
+                description: 'Tienes una gran imaginación y creatividad. Te gusta observar y reflexionar antes de actuar. Eres excelente generando ideas nuevas y viendo las situaciones desde diferentes puntos de vista.'
+            },
+            'CA+OR': {
+                name: 'Asimilador',
+                description: 'Te encanta entender cómo funcionan las cosas. Prefieres las explicaciones lógicas y claras. Eres muy bueno organizando información y creando teorías o modelos para explicar lo que observas.'
+            },
+            'CA+EA': {
+                name: 'Convergente',
+                description: 'Eres práctico y te gusta aplicar lo que aprendes. Prefieres encontrar soluciones específicas a problemas concretos. Eres excelente tomando decisiones y poniendo en práctica las ideas.'
+            }
+        };
+
+        function generateQuestions() {
+            const form = document.getElementById('testForm');
+            
+            questions.forEach(question => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-container';
+                
+                questionDiv.innerHTML = `
+                    <div class="question">
+                        <h4>${question.id}. ${question.text}</h4>
+                        <div class="options">
+                            ${question.options.map(option => `
+                                <div class="option">
+                                    <select name="q${question.id}_${option.id}" data-question="${question.id}" data-option="${option.id}" onchange="handleSelectionChange(this)">
+                                        <option value="">-</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                    <span class="option-text">${option.text}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                
+                form.appendChild(questionDiv);
+            });
+        }
+
+        function handleSelectionChange(select) {
+            const questionId = select.dataset.question;
+            const selectedValue = select.value;
+            
+            // Marcar la opción como seleccionada visualmente
+            const option = select.closest('.option');
+            if (selectedValue) {
+                option.classList.add('selected');
+            } else {
+                option.classList.remove('selected');
+            }
+            
+            // Validar que no se repitan valores en la misma pregunta
+            if (selectedValue) {
+                const questionSelects = document.querySelectorAll(`select[data-question="${questionId}"]`);
+                questionSelects.forEach(otherSelect => {
+                    if (otherSelect !== select && otherSelect.value === selectedValue) {
+                        otherSelect.value = '';
+                        otherSelect.closest('.option').classList.remove('selected');
+                    }
+                });
+            }
+            
+            validateForm();
+        }
+
+        function validateForm() {
+            const studentName = document.getElementById('studentName').value.trim();
+            let allQuestionsAnswered = true;
+            let allQuestionsValid = true;
+            
+            // Validar que todas las preguntas estén respondidas y con valores únicos
+            questions.forEach(question => {
+                const selects = document.querySelectorAll(`select[data-question="${question.id}"]`);
+                const values = Array.from(selects).map(select => select.value).filter(val => val);
+                
+                if (values.length !== 4) {
+                    allQuestionsAnswered = false;
+                }
+                
+                const uniqueValues = [...new Set(values)];
+                if (uniqueValues.length !== values.length) {
+                    allQuestionsValid = false;
+                }
+            });
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const errorDiv = document.getElementById('errorMessage');
+            
+            if (!studentName) {
+                submitBtn.disabled = true;
+                errorDiv.textContent = 'Por favor, escribe tu nombre.';
+                errorDiv.style.display = 'block';
+            } else if (!allQuestionsAnswered) {
+                submitBtn.disabled = true;
+                errorDiv.textContent = 'Por favor, responde todas las preguntas.';
+                errorDiv.style.display = 'block';
+            } else if (!allQuestionsValid) {
+                submitBtn.disabled = true;
+                errorDiv.textContent = 'Recuerda: debes usar cada número (1, 2, 3, 4) una sola vez por pregunta.';
+                errorDiv.style.display = 'block';
+            } else {
+                submitBtn.disabled = false;
+                errorDiv.style.display = 'none';
+            }
+        }
+
+        function calculateResults() {
+            const studentName = document.getElementById('studentName').value.trim();
+            
+            // Calcular puntuaciones por dimensión
+            const scores = { EC: 0, OR: 0, CA: 0, EA: 0 };
+            
+            questions.forEach(question => {
+                question.options.forEach(option => {
+                    const select = document.querySelector(`select[name="q${question.id}_${option.id}"]`);
+                    const value = parseInt(select.value) || 0;
+                    scores[option.dimension] += value;
+                });
+            });
+            
+            // Determinar estilo de aprendizaje
+            let dominantStyle = '';
+            let maxCombination = 0;
+            
+            const combinations = {
+                'EC+EA': scores.EC + scores.EA,
+                'EC+OR': scores.EC + scores.OR,
+                'CA+OR': scores.CA + scores.OR,
+                'CA+EA': scores.CA + scores.EA
+            };
+            
+            for (const [combination, total] of Object.entries(combinations)) {
+                if (total > maxCombination) {
+                    maxCombination = total;
+                    dominantStyle = combination;
+                }
+            }
+            
+            // Mostrar resultados
+            displayResults(studentName, scores, dominantStyle);
+        }
+
+        function displayResults(studentName, scores, dominantStyle) {
+            const resultsDiv = document.getElementById('results');
+            const resultDetailsDiv = document.getElementById('resultDetails');
+            const scoresDisplayDiv = document.getElementById('scoresDisplay');
+            
+            const style = learningStyles[dominantStyle];
+            const currentDate = new Date().toLocaleDateString('es-ES');
+            
+            resultDetailsDiv.innerHTML = `
+                <h4>👤 Estudiante: ${studentName}</h4>
+                <div class="learning-style">🎯 Tu estilo de aprendizaje es: ${style.name}</div>
+                <div class="style-description">${style.description}</div>
+                <p><strong>Fecha del test:</strong> ${currentDate}</p>
+            `;
+            
+            scoresDisplayDiv.innerHTML = `
+                <div class="score-item">
+                    <div class="score-label">EC (Sentir)</div>
+                    <div class="score-value">${scores.EC}</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-label">OR (Observar)</div>
+                    <div class="score-value">${scores.OR}</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-label">CA (Pensar)</div>
+                    <div class="score-value">${scores.CA}</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-label">EA (Actuar)</div>
+                    <div class="score-value">${scores.EA}</div>
+                </div>
+            `;
+            
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+            
+            // Guardar resultados para descarga
+            window.currentResults = {
+                studentName,
+                scores,
+                dominantStyle,
+                styleName: style.name,
+                styleDescription: style.description,
+                date: currentDate
+            };
+        }
+
+        function downloadResults() {
+            if (!window.currentResults) return;
+            
+            const results = window.currentResults;
+            const content = `
+TEST DE ESTILOS DE APRENDIZAJE - MODELO DE KOLB
+==============================================
+
+INFORMACIÓN DEL ESTUDIANTE:
+- Nombre: ${results.studentName}
+- Fecha del test: ${results.date}
+
+RESULTADO PRINCIPAL:
+- Estilo de aprendizaje: ${results.styleName}
+- Descripción: ${results.styleDescription}
+
+PUNTUACIONES DETALLADAS:
+- EC (Experiencia Concreta / Sentir): ${results.scores.EC} puntos
+- OR (Observación Reflexiva / Observar): ${results.scores.OR} puntos
+- CA (Conceptualización Abstracta / Pensar): ${results.scores.CA} puntos
+- EA (Experimentación Activa / Actuar): ${results.scores.EA} puntos
+
+INTERPRETACIÓN:
+El estilo "${results.styleName}" indica que el estudiante ${results.styleDescription}
+
+==============================================
+Test generado por: Sistema de Evaluación de Estilos de Aprendizaje
+Basado en el modelo de David Kolb
+            `.trim();
+            
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Test_Kolb_${results.studentName.replace(/\s+/g, '_')}_${results.date.replace(/\//g, '-')}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+
+        function restartTest() {
+            document.getElementById('studentName').value = '';
+            document.getElementById('testForm').querySelectorAll('select').forEach(select => {
+                select.value = '';
+                select.closest('.option').classList.remove('selected');
+            });
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
+            window.currentResults = null;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            validateForm();
+        }
+
+        // Inicializar la aplicación
+        document.addEventListener('DOMContentLoaded', function() {
+            generateQuestions();
+            
+            // Agregar listener al campo de nombre
+            document.getElementById('studentName').addEventListener('input', validateForm);
+            
+            validateForm();
+        });
+    </script>
+</body>
+</html>
