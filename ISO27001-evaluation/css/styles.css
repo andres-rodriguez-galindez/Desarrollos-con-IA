@@ -1,0 +1,214 @@
+/* Variables para colores modernos y accesibles */
+:root {
+  --primary-blue: #2c6cb0;
+  --secondary-gray: #6c757d;
+  --success-green: #28a745;
+  --warning-orange: #ffc107;
+  --error-red: #dc3545;
+  --background-light: #f9fbfd;
+  --white: #ffffff;
+  --text-dark: #343a40;
+  --border-light: #ced4da;
+  --shadow-soft: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+/* Contenedor general */
+.container {
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 2.5rem 1.5rem;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  font-size: 1rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* Encabezados */
+h1, h2, h3 {
+  color: var(--primary-blue);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-top: 2rem;
+}
+
+/* Formularios */
+
+/* Agrupación clara con border y padding */
+fieldset {
+  border: 1px solid var(--border-light);
+  padding: 1.5rem 1.2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  background: var(--background-light);
+}
+
+legend {
+  font-weight: 700;
+  color: var(--primary-blue);
+  font-size: 1.1rem;
+  padding: 0 0.5rem;
+  width: auto;
+}
+
+/* Etiquetas */
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+/* Inputs y selects */
+input[type="text"],
+input[type="date"],
+select.form-select {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border-radius: 6px;
+  border: 1.5px solid var(--border-light);
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background: var(--white);
+  color: var(--text-dark);
+  box-sizing: border-box;
+  outline-offset: 2px;
+}
+
+/* Placeholder color */
+::placeholder {
+  color: var(--secondary-gray);
+  opacity: 1;
+}
+
+/* Enfoque claro y visible */
+input[type="text"]:focus,
+input[type="date"]:focus,
+select.form-select:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(44, 108, 176, 0.25);
+  outline: none;
+}
+
+/* Opciones seleccionadas para feedback */
+select.form-select:not([value=""]):valid {
+  border-color: var(--success-green);
+}
+
+/* Botones estilizados y con feedback */
+.btn {
+  padding: 0.6rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-soft);
+  color: var(--white);
+  font-size: 1rem;
+  margin-right: 0.7rem;
+  min-width: 130px;
+  text-align: center;
+  user-select: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--primary-blue);
+}
+
+.btn-secondary {
+  background: var(--secondary-gray);
+}
+
+.btn-success {
+  background: var(--success-green);
+}
+
+/* Animaciones suaves en hover/focus */
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  opacity: 0.95;
+  outline: none;
+}
+
+/* Feedback para alertas */
+.alert-section {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--primary-blue);
+  min-height: 40px;
+}
+
+/* Ajuste responsive simple */
+@media print {
+  #radarChart {
+    max-width: 500px !important;
+    max-height: 350px !important;
+    width: 500px !important;
+    height: 350px !important;
+    display: block;
+    margin: 0 auto !important;
+  }
+}
+
+
+
+
+.progress-bar-container {
+  position: relative;
+  background: #807f7dff;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 32px;
+  width: 100%;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  transition: width 0.5s ease;
+  border-radius: 8px 0 0 8px;
+  /* El color de fondo se asigna por inline style */
+}
+
+.progress-bar-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+  pointer-events: none; /* evita bloquear clicks */
+  user-select: none;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.page-break {
+  page-break-after: always;
+  break-after: page;
+}
+
+
+ul, li {
+  orphans: 3;
+  widows: 3;
+  page-break-inside: avoid;
+}
+  
+

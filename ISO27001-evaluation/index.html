@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evaluación ISO 27001 - Auditoría de Seguridad</title>
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+    <main class="container mt-5" role="main" aria-labelledby="main-title">
+      <h1 id="main-title" class="text-center mb-4">Evaluación de Controles ISO 27001</h1>
+
+      <!-- Descripción de la Auditoría -->
+      <section class="row" aria-label="Descripción de la auditoría">
+        <article class="col-md-8 offset-md-2">
+          <div class="audit-description alert alert-secondary" role="region" aria-live="polite" tabindex="0">
+            <h2>¿Cómo se mide esta auditoría?</h2>
+            <p>Esta auditoría evalúa el nivel de implementación de los controles de seguridad según la norma ISO 27001.</p>
+            <h3>Calificación:</h3>
+            <p>Cada pregunta puede ser respondida con uno de los siguientes valores:</p>
+            <ul>
+              <li><strong>0 - No implementado:</strong> El control no existe o no se aplica.</li>
+              <li><strong>1 - Parcialmente implementado:</strong> El control existe pero requiere mejoras importantes.</li>
+              <li><strong>2 - Mayormente implementado:</strong> El control está implementado pero puede optimizarse.</li>
+              <li><strong>3 - Completamente implementado:</strong> El control está plenamente aplicado y se mantiene.</li>
+            </ul>
+            <h3>Puntaje total:</h3>
+            <p>El puntaje total es la suma de todas las respuestas. Cada pregunta puede otorgar hasta 3 puntos.<br />
+               Por ejemplo, si hay 10 preguntas, el puntaje máximo es 30 (todas las preguntas completamente implementadas).<br />
+               Un puntaje bajo indica áreas críticas a mejorar, mientras que un puntaje alto refleja mayor cumplimiento de la norma ISO 27001.<br />
+               El resultado te ayudará a identificar áreas críticas, oportunidades de mejora y controles que ya cumplen con la norma.</p>
+
+            <h3>¿Qué significan los códigos A.5, A.6, A.7, A.8, A.9?</h3>
+            <p>Los códigos <strong>A.5, A.6, A.7, A.8, A.9</strong> corresponden a secciones específicas de los controles de seguridad definidos por la norma ISO 27001. Cada uno agrupa controles y buenas prácticas relacionadas con un aspecto de la seguridad de la información:</p>
+            <ul>
+              <li><strong>A.5:</strong> Políticas de seguridad de la información</li>
+              <li><strong>A.6:</strong> Organización de la seguridad de la información</li>
+              <li><strong>A.7:</strong> Seguridad de los recursos humanos</li>
+              <li><strong>A.8:</strong> Gestión de activos</li>
+              <li><strong>A.9:</strong> Control de acceso</li>
+            </ul>
+            <p>Estos códigos ayudan a identificar y clasificar los controles dentro del marco de la norma ISO 27001.</p>
+          </div>
+        </article>
+      </section>
+
+      <!-- Información de la Auditoría -->
+      <section class="row mb-3" aria-label="Información de la auditoría">
+        <div class="col-md-4">
+          <label for="companyName" class="form-label">Nombre de la empresa</label>
+          <input
+            type="text"
+            id="companyName"
+            class="form-control"
+            placeholder="Nombre de la empresa"
+            autocomplete="organization"
+            required
+          />
+        </div>
+        <div class="col-md-4">
+          <label for="auditorName" class="form-label">Nombre del auditor</label>
+          <input
+            type="text"
+            id="auditorName"
+            class="form-control"
+            placeholder="Nombre del auditor"
+            autocomplete="name"
+            required
+          />
+        </div>
+        <div class="col-md-4">
+          <label for="auditDate" class="form-label">Fecha de auditoría</label>
+          <input
+            type="date"
+            id="auditDate"
+            class="form-control"
+            required
+          />
+        </div>
+      </section>
+
+      <!-- Formulario de Evaluación -->
+      <section class="row" aria-label="Formulario de evaluación ISO 27001">
+        <div class="col-md-8 offset-md-2">
+          <form id="isoEvaluationForm" aria-describedby="form-desc" novalidate>
+            <p id="form-desc" class="visually-hidden">
+              Complete las preguntas para evaluar el nivel de implementación de los controles. Use las opciones desplegables para seleccionar cada calificación.
+            </p>
+
+            <fieldset class="mb-4">
+              <legend>A.5 Políticas de seguridad</legend>
+
+              <div class="mb-3">
+                <label for="policy_documented" class="form-label">¿Existe una política de seguridad documentada y aprobada?</label>
+                <select id="policy_documented" class="form-select" name="policy_documented" required>
+                  <option value="" disabled selected>Seleccione una opción</option>
+                  <option value="0">No implementado</option>
+                  <option value="1">Parcialmente implementado</option>
+                  <option value="2">Mayormente implementado</option>
+                  <option value="3">Completamente implementado</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="policy_reviewed" class="form-label">¿Se revisan y actualizan las políticas de seguridad regularmente?</label>
+                <select id="policy_reviewed" class="form-select" name="policy_reviewed" required>
+                  <option value="" disabled selected>Seleccione una opción</option>
+                  <option value="0">No implementado</option>
+                  <option value="1">Parcialmente implementado</option>
+                  <option value="2">Mayormente implementado</option>
+                  <option value="3">Completamente implementado</option>
+                </select>
+              </div>
+            </fieldset>
+
+            <fieldset class="mb-4">
+              <legend>A.6 Organización de la seguridad</legend>
+
+              <div class="mb-3">
+                <label for="roles_defined" class="form-label">¿Están definidos los roles y responsabilidades de seguridad?</label>
+                <select id="roles_defined" class="form-select" name="roles_defined" required>
+                  <option value="" disabled selected>Seleccione una opción</option>
+                  <option value="0">No implementado</option>
+                  <option value="1">Parcialmente implementado</option>
+                  <option value="2">Mayormente implementado</option>
+                  <option value="3">Completamente implementado</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="security_committee" class="form-label">¿Existe un comité de seguridad o un responsable de seguridad designado?</label>
+                <select id="security_committee" class="form-select" name="security_committee" required>
+                  <option value="" disabled selected>Seleccione una opción</option>
+                  <option value="0">No implementado</option>
+                  <option value="1">Parcialmente implementado</option>
+                  <option value="2">Mayormente implementado</option>
+                  <option value="3">Completamente implementado</option>
+                </select>
+              </div>
+            </fieldset>
+
+            <fieldset class="mb-4">
+              <legend>A.7 Recursos Humanos</legend>
+
+              <div class="mb-3">
+                <label for="background_checks" class="form-label">¿Se realizan verificaciones de antecedentes para el personal de seguridad?</label>
+                <select id="background_checks" class="form-select" name="background_checks" required>
+                  <option value="" disabled selected>Seleccione una opción</option>
+                  <option value="0">No implementado</option>
+                  <option value="1">Parcialmente implementado</option>
+                  <option value="2">Mayormente implementado</option>
+                  <option value="3">Completamente implementado</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="security_training" class="form-label">¿Se proporciona capacitación en seguridad a los empleados?</label>
+                <select id="security_training" class="form-select" name="security_training" required>
+                  <option value="" disabled selected>Seleccione una opción</option>
+                  <option value="0">No implementado</option>
+                  <option value="1">Parcialmente implementado</option>
+                  <option value="2">Mayormente implementado</option>
+                  <option value="3">Completamente implementado</option>
+                </select>
+              </div>
+            </fieldset>
+
+            <fieldset class="mb-4">
+              <legend>A.8 Gestión de Activos</legend>
+
+              <div class="mb-3">
+                <label for="asset_inventory" class="form-label">¿Se tiene un inventario de activos de información?</label>
+                <select id="asset_inventory" class="form-select" name="asset_inventory" required>
+                  <option value="" disabled selected>Seleccione una opción</option>
+                  <option value="0">No implementado</option>
+                  <option value="1">Parcialmente implementado</option>
+                  <option value="2">Mayormente implementado</option>
+                  <option value="3">Completamente implementado</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="asset_classification" class="form-label">¿Se clasifican los activos de información según su criticidad?</label>
+                <select id="asset_classification" class="form-select" name="asset_classification" required>
+                  <option value="" disabled selected>Seleccione una opción</option>
+                  <option value="0">No implementado</option>
+                  <option value="1">Parcialmente implementado</option>
+                  <option value="2">Mayormente implementado</option>
+                  <option value="3">Completamente implementado</option>
+                </select>
+              </div>
+            </fieldset>
+
+            <fieldset class="mb-4">
+              <legend>A.9 Control de Acceso</legend>
+
+              <div class="mb-3">
+                <label for="access_control" class="form-label">¿Existen controles de acceso a la información?</label>
+                <select id="access_control" class="form-select" name="access_control" required>
+                  <option value="" disabled selected>Seleccione una opción</option>
+                  <option value="0">No implementado</option>
+                  <option value="1">Parcialmente implementado</option>
+                  <option value="2">Mayormente implementado</option>
+                  <option value="3">Completamente implementado</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="access_review" class="form-label">¿Se revisan los permisos de acceso regularmente?</label>
+                <select id="access_review" class="form-select" name="access_review" required>
+                  <option value="" disabled selected>Seleccione una opción</option>
+                  <option value="0">No implementado</option>
+                  <option value="1">Parcialmente implementado</option>
+                  <option value="2">Mayormente implementado</option>
+                  <option value="3">Completamente implementado</option>
+                </select>
+              </div>
+            </fieldset>
+
+            <div class="d-flex flex-wrap gap-2">
+              <button type="submit" class="btn btn-primary" aria-label="Evaluar formulario">Evaluar</button>
+              <button type="button" id="clearButton" class="btn btn-secondary" aria-label="Limpiar formulario">Limpiar</button>
+              <button type="button" id="downloadButton" class="btn btn-success" aria-label="Descargar reporte">Descargar Reporte</button>
+              <button type="button" id="printButton" class="btn btn-secondary" aria-label="Imprimir reporte">Imprimir</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Resultados -->
+      <section class="row mt-5" aria-label="Resultados de la evaluación">
+        <div class="col-md-6">
+          <canvas id="radarChart" role="img" aria-label="Gráfico radar de resultados"></canvas>
+        </div>
+        <div class="col-md-6">
+          <div id="alertSection" class="alert-section" aria-live="polite" tabindex="0"></div>
+          <div id="progressBarContainer" style="margin: 16px 0"></div>
+          <div id="recommendationSection"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Accesibilidad: estilos para "visually-hidden" -->
+    <style>
+      .visually-hidden {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+      }
+    </style>
+  </body>
+</html>
